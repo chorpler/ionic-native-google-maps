@@ -32,7 +32,7 @@ export function getProgram(rootNames: string[] = createSourceFiles()) {
 
 // hacky way to export metadata only for core package
 export function transpileNgxCore() {
-  getProgram([path.resolve(ROOT, 'src/@ionic-native/core/index.ts')]).emit({
+  getProgram([path.resolve(ROOT, 'src/@awesome-cordova-plugins/core/index.ts')]).emit({
     emitFlags: EmitFlags.Metadata,
     emitCallback: ({ program, writeFile, customTransformers, cancellationToken, targetSourceFile }) =>
       program.emit(targetSourceFile, writeFile, cancellationToken, true, customTransformers)
@@ -55,7 +55,7 @@ export function generateDeclarationFiles() {
   generateDeclarations(PLUGIN_PATHS.map(p => p.replace('index.ts', 'ngx/index.ts')));
 }
 
-// remove reference to @ionic-native/core decorators
+// remove reference to @awesome-cordova-plugins/core decorators
 export function modifyMetadata() {
   PLUGIN_PATHS.map(p => p.replace(path.join(ROOT, 'src'), path.join(ROOT, 'dist')).replace('index.ts', 'ngx/index.metadata.json'))
     .forEach(p => {
@@ -78,7 +78,7 @@ export function modifyMetadata() {
 
 function removeIonicNativeDecorators(node: any) {
   if (node.decorators && node.decorators.length) {
-    node.decorators = node.decorators.filter((d, i) => d.expression.module !== '@ionic-native/core');
+    node.decorators = node.decorators.filter((d, i) => d.expression.module !== '@awesome-cordova-plugins/core');
   }
 
   if (node.decorators && !node.decorators.length) delete node.decorators;

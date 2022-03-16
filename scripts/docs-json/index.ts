@@ -17,7 +17,7 @@ interface Plugin {
 
 const rootDir = resolve(__dirname, '../..');
 const typedocTmp = resolve(__dirname, 'typedoc.tmp.json');
-const pluginsDir = resolve(rootDir, 'src/@ionic-native/plugins');
+const pluginsDir = resolve(rootDir, 'src/@awesome-cordova-plugins/plugins');
 const typedoc = new Application({
   mode: 'modules',
   tsconfig: resolve(rootDir, 'tsconfig.json'),
@@ -45,7 +45,7 @@ async function generateTypedoc(root: string, outputPath = typedocTmp) {
 function processPlugin(pluginModule): Plugin {
   const pluginClass = pluginModule.children.find(isPlugin);
   const decorator = getPluginDecorator(pluginClass);
-  const packageName = `@ionic-native/${basename(dirname(pluginModule.originalName))}`;
+  const packageName = `@awesome-cordova-plugins/${basename(dirname(pluginModule.originalName))}`;
   const displayName = getTag(pluginClass, 'name');
   const usage = getTag(pluginClass, 'usage');
   const description = getTag(pluginClass, 'description');

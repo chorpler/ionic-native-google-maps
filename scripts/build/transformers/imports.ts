@@ -7,12 +7,12 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
     file.statements = (file.statements as any).filter((s: any) => !(s.kind === ts.SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@angular/core'));
   }
 
-  // find the @ionic-native/core import statement
+  // find the @awesome-cordova-plugins/core import statement
   const importStatement = (file.statements as any).find((s: any) => {
-    return s.kind === ts.SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@ionic-native/core';
+    return s.kind === ts.SyntaxKind.ImportDeclaration && s.moduleSpecifier.text === '@awesome-cordova-plugins/core';
   });
 
-  // we're only interested in files containing @ionic-native/core import statement
+  // we're only interested in files containing @awesome-cordova-plugins/core import statement
   if (!importStatement) return file;
 
   const decorators: string[] = [];
@@ -41,7 +41,7 @@ function transformImports(file: ts.SourceFile, ctx: ts.TransformationContext, ng
     const methodNames = methodElements.map((el) => el.escapedText);
 
     importStatement.importClause.namedBindings.elements = [
-      ts.createIdentifier('IonicNativePlugin'),
+      ts.createIdentifier('AwesomeCordovaNativePlugin'),
       ...methodElements,
       ...importStatement.importClause.namedBindings.elements.filter(
         el => keep.indexOf(el.name.text) !== -1 && methodNames.indexOf(el.name.text) === -1

@@ -13,7 +13,7 @@ module.exports = {
     'json',
   ],
   moduleNameMapper: {
-    '^@ionic-native/core$': '<rootDir>/node_modules/@ionic-native/core',
+    '^@awesome-cordova-plugins/core$': '<rootDir>/node_modules/@awesome-cordova-plugins/core',
     '^cordova/utils$': '<rootDir>/node_modules/cordova-js/src/common/utils',
     'rxjs': '<rootDir>/node_modules/rxjs',
   },

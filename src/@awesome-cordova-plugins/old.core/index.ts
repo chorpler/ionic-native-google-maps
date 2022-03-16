@@ -1,6 +1,6 @@
 import { checkReady } from './bootstrap';
 
-export { IonicNativePlugin } from './ionic-native-plugin';
+export { AwesomeCordovaNativePlugin } from './ionic-native-plugin';
 
 // Decorators
 export { checkAvailability, instanceAvailability, wrap, getPromise } from './decorators/common';

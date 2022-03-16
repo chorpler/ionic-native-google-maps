@@ -1,4 +1,4 @@
-import { GoogleMap } from '../../../../dist/@ionic-native/plugins/google-maps';
+import { GoogleMap } from '../../../../dist/@awesome-cordova-plugins/plugins/google-maps';
 
 import { GoogleMapCordovaMock, GoogleMapsCordovaMock } from '../../../test/mocks';
 import { mockCordova, mockCordovaRestore } from '../../../test/utils';
